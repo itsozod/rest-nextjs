@@ -1,6 +1,6 @@
 "use client";
 import { Col, Flex, Input } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Countries.module.css";
 import Grid from "antd/es/card/Grid";
@@ -8,7 +8,6 @@ import Grid from "antd/es/card/Grid";
 export const Countries = () => {
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
-  // const countries = await getCountries();
 
   useEffect(() => {
     async function getCountries() {
@@ -35,9 +34,9 @@ export const Countries = () => {
     }
   };
 
-  const handleQuery = (e) => {
+  const handleQuery = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
-    setQuery(value);
+    setQuery(value.toLowerCase());
 
     if (value) {
       handleCountry(value);
