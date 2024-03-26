@@ -21,7 +21,7 @@ export default function RootLayout({
         <Layout style={{ minHeight: "100vh", background: "#fff" }}>
           <AntdRegistry>
             <HeaderLayout />
-            <Content>{children}</Content>
+            <Content style={{ background: "lightgrey" }}>{children}</Content>
           </AntdRegistry>
         </Layout>
       </body>
