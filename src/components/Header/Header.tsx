@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import styles from "./Header.module.css";
 import { Header } from "antd/es/layout/layout";

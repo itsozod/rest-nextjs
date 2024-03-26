@@ -3,6 +3,7 @@ import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { HeaderLayout } from "@/components/Header/Header";
 import { Layout } from "antd";
+import { Content } from "antd/es/layout/layout";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,7 +21,7 @@ export default function RootLayout({
         <Layout style={{ minHeight: "100vh", background: "#fff" }}>
           <AntdRegistry>
             <HeaderLayout />
-            {children}
+            <Content>{children}</Content>
           </AntdRegistry>
         </Layout>
       </body>
