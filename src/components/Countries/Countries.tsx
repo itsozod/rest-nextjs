@@ -1,11 +1,14 @@
 "use client";
-import { Col, Flex, Input } from "antd";
+import { Col, Flex, Row } from "antd";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Countries.module.css";
 import Grid from "antd/es/card/Grid";
+import { SearchBar } from "../SearchBar/SearchBar";
+import { useRouter } from "next/navigation";
 
 export const Countries = () => {
+  const router = useRouter();
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
 
@@ -52,16 +55,18 @@ export const Countries = () => {
           marginTop: "10px",
         }}
       >
-        <Input
-          placeholder="Enter country name"
-          value={query}
-          onChange={(e) => handleQuery(e)}
-        />
+        <Row style={{ padding: "10px" }}>
+          <SearchBar query={query} handleQuery={handleQuery} />
+        </Row>
         <Grid className={styles["countries_container"]}>
           {countries.length === 0 ? <p>Loading...</p> : null}
           {countries?.map((country: any) => {
             return (
               <Flex
+                onClick={() => {
+                  console.log("Country", country.name.common);
+                  router.push(`/${country.name.common}`);
+                }}
                 vertical={true}
                 justify="center"
                 align="start"
@@ -72,6 +77,7 @@ export const Countries = () => {
                   background: "#fff",
                   alignSelf: "normal",
                   borderRadius: "12px",
+                  cursor: "pointer",
                 }}
               >
                 <Image
