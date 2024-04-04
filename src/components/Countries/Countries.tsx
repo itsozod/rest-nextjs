@@ -6,22 +6,24 @@ import styles from "./Countries.module.css";
 import Grid from "antd/es/card/Grid";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { useRouter } from "next/navigation";
+import { DropdownMenu } from "../Dropdown/Dropdown";
 
 export const Countries = () => {
   const router = useRouter();
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    async function getCountries() {
-      try {
-        const res = await fetch(`https://restcountries.com/v3.1/all`);
-        const countries = await res.json();
-        setCountries(countries);
-      } catch (e) {
-        console.error(e);
-      }
+  async function getCountries() {
+    try {
+      const res = await fetch(`https://restcountries.com/v3.1/all`);
+      const countries = await res.json();
+      setCountries(countries);
+    } catch (e) {
+      console.error(e);
     }
+  }
+
+  useEffect(() => {
     getCountries();
   }, []);
 
@@ -43,6 +45,9 @@ export const Countries = () => {
 
     if (value) {
       handleCountry(value);
+    } else {
+      getCountries();
+      console.log("RENDERRRRRR")
     }
   };
 
@@ -55,9 +60,11 @@ export const Countries = () => {
           marginTop: "10px",
         }}
       >
-        <Row style={{ padding: "10px" }}>
+        <Flex justify="space-between" style={{ padding: "10px" }}>
           <SearchBar query={query} handleQuery={handleQuery} />
-        </Row>
+          <DropdownMenu/>
+        </Flex>
+        
         <Grid className={styles["countries_container"]}>
           {countries.length === 0 ? <p>Loading...</p> : null}
           {countries?.map((country: any) => {
@@ -70,7 +77,7 @@ export const Countries = () => {
                 vertical={true}
                 justify="center"
                 align="start"
-                key={country.name.common}
+                key={country?.name?.common}
                 style={{
                   width: "100%",
                   height: "100%",
@@ -81,7 +88,7 @@ export const Countries = () => {
                 }}
               >
                 <Image
-                  src={country.flags.png}
+                  src={country?.flags?.png}
                   alt="Flag"
                   width={150}
                   height={150}
@@ -100,10 +107,10 @@ export const Countries = () => {
                     marginTop: "auto",
                   }}
                 >
-                  <h2>{country.name.common}</h2>
-                  <div>Population: {country.population}</div>
-                  <div>Region: {country.region}</div>
-                  <div>Capital: {country.capital}</div>
+                  <h2>{country?.name?.common}</h2>
+                  <div>Population: {country?.population}</div>
+                  <div>Region: {country?.region}</div>
+                  <div>Capital: {country?.capital}</div>
                 </Col>
               </Flex>
             );

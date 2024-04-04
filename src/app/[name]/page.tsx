@@ -51,12 +51,12 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
           justify="space-between"
         >
           {countries?.map((country) => {
-            const currencyKey = Object.keys(country.currencies);
+            const currencyKey = Object.keys(country?.currencies);
             return (
               <>
-                <Row key={country.flags.svg}>
+                <Row key={country?.flags?.svg}>
                   <Image
-                    src={country.flags.svg}
+                    src={country?.flags?.svg}
                     alt="Flag"
                     width={450}
                     height={350}
@@ -71,28 +71,28 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
                 <Flex vertical={true} gap={40}>
                   <Flex className={styles.country_info_container} gap={80}>
                     <Flex vertical={true} gap={10} justify="center">
-                      <h1>{country.name.common}</h1>
+                      <h1>{country?.name?.common}</h1>
                       <Col>
-                        <Row>Native name: {country.altSpellings[1]}</Row>
-                        <Row>Population: {country.population}</Row>
-                        <Row>Region: {country.region}</Row>
-                        <Row>Sub Region: {country.subregion}</Row>
-                        <Row>Capital: {country.capital}</Row>
+                        <Row>Native name: {country?.altSpellings[1]}</Row>
+                        <Row>Population: {country?.population}</Row>
+                        <Row>Region: {country?.region}</Row>
+                        <Row>Sub Region: {country?.subregion}</Row>
+                        <Row>Capital: {country?.capital}</Row>
                       </Col>
                     </Flex>
                     <Col>
-                      <Row>Top Level Domain: {country.tld[0]}</Row>
+                      <Row>Top Level Domain: {country?.tld[0]}</Row>
                       <Row>
-                        Currencies: {country.currencies[currencyKey].name}{" "}
+                        Currencies: {country?.currencies[currencyKey]?.name}{" "}
                       </Row>
                       <Row>
-                        Languages: {Object.values(country.languages).join(", ")}
+                        Languages: {Object.values(country?.languages).join(", ")}
                       </Row>
                     </Col>
                   </Flex>
                   <Row>
                     Border Countries:{"  "}
-                    {country.borders
+                    {country?.borders
                       ? Object.values(country?.borders).join(", ")
                       : "None"}
                   </Row>
