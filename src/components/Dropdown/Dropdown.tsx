@@ -1,55 +1,38 @@
 "use client";
-import { Button, Dropdown, MenuProps, Space, Typography } from "antd";
+import { Button, ConfigProvider, Dropdown, MenuProps, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
-const items: MenuProps["items"] = [
-  {
-    key: "1",
-    label: "Africa",
-  },
-  {
-    key: "2",
-    label: "America",
-  },
-  {
-    key: "3",
-    label: "Asia",
-  },
-  {
-    key: "4",
-    label: "Europe",
-  },
-  {
-    key: "5",
-    label: "Oceania",
-  },
-];
-
-export const DropdownMenu = () => {
+export const DropdownMenu = ({items}: MenuProps) => {
   return (
     <>
-      <Dropdown
-        overlayStyle={{
-          color: "green",
-        }}
-        menu={{
-          items,
-          selectable: true,
-          defaultSelectedKeys: ["3"],
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "black",
+          },
         }}
       >
-        <Button
-          style={{
-            background: "black",
-            color: "#fff",
+        <Dropdown
+          trigger={["click"]}
+          menu={{
+            items,
+            selectable: true,
+            style: { background: "black" },
           }}
         >
-          <Space>
-            Filter by region
-            <DownOutlined />
-          </Space>
-        </Button>
-      </Dropdown>
+          <Button
+            style={{
+              background: "black",
+              color: "#fff",
+            }}
+          >
+            <Space>
+              Filter by region
+              <DownOutlined />
+            </Space>
+          </Button>
+        </Dropdown>
+      </ConfigProvider>
     </>
   );
 };

@@ -1,5 +1,5 @@
 "use client";
-import { Col, Flex, Row } from "antd";
+import { Col, Flex, MenuProps, Row } from "antd";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Countries.module.css";
@@ -9,6 +9,61 @@ import { useRouter } from "next/navigation";
 import { DropdownMenu } from "../Dropdown/Dropdown";
 
 export const Countries = () => {
+  const getCountryByRegion = async (region: string) => {
+    try {
+      const res = await fetch(
+        `https://restcountries.com/v3.1/region/${region}`
+      );
+      const data = await res.json();
+      if (data.status !== 404) {
+        setCountries(data);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  const items: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <a onClick={() => getCountryByRegion("Africa")} style={{ color: "#fff" }} href="#">
+          Africa
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a onClick={() => getCountryByRegion("America")}  style={{ color: "#fff" }} href="#">
+          America
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a onClick={() => getCountryByRegion("Asia")}  style={{ color: "#fff" }} href="#">
+          Asia
+        </a>
+      ),
+    },
+    {
+      key: "4",
+      label: (
+        <a onClick={() => getCountryByRegion("Europe")}  style={{ color: "#fff" }} href="#">
+          Europe
+        </a>
+      ),
+    },
+    {
+      key: "5",
+      label: (
+        <a onClick={() => getCountryByRegion("Oceania")}  style={{ color: "#fff" }} href="#">
+          Oceania
+        </a>
+      ),
+    },
+  ];
   const router = useRouter();
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
@@ -47,7 +102,6 @@ export const Countries = () => {
       handleCountry(value);
     } else {
       getCountries();
-      console.log("RENDERRRRRR")
     }
   };
 
@@ -60,11 +114,11 @@ export const Countries = () => {
           marginTop: "10px",
         }}
       >
-        <Flex justify="space-between" style={{ padding: "10px" }}>
+        <Flex gap={10} justify="space-between" style={{ padding: "10px" }}>
           <SearchBar query={query} handleQuery={handleQuery} />
-          <DropdownMenu/>
+          <DropdownMenu items={items} />
         </Flex>
-        
+
         <Grid className={styles["countries_container"]}>
           {countries.length === 0 ? <p>Loading...</p> : null}
           {countries?.map((country: any) => {
