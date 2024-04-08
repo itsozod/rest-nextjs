@@ -2,11 +2,17 @@
 import React from "react";
 import styles from "./Header.module.css";
 import { Flex, Row } from "antd";
+import { Header } from "antd/es/layout/layout";
 
 export const HeaderLayout = () => {
   return (
     <>
-      <header className={styles.header}>
+      <Header
+        className={styles.header}
+        style={{
+          background: "white",
+        }}
+      >
         <Flex
           justify="space-between"
           align="center"
@@ -15,7 +21,7 @@ export const HeaderLayout = () => {
           <Row>Where in the world</Row>
           <Row>Dark Mode</Row>
         </Flex>
-      </header>
+      </Header>
     </>
   );
 };

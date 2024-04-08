@@ -118,9 +118,6 @@ export const Countries = () => {
   };
 
   useEffect(() => {
-    // if (!searchQuery) {
-    //   setNotfound(false);
-    // }
     if (searchQuery) {
       handleCountry(searchQuery);
     } else {
