@@ -2,13 +2,14 @@
 import { Button, ConfigProvider, Dropdown, MenuProps, Space } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
-export const DropdownMenu = ({items}: MenuProps) => {
+export const DropdownMenu = ({ items }: MenuProps) => {
   return (
     <>
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "black",
+            colorPrimary: "white",
+            colorTextLightSolid: "black",
           },
         }}
       >
@@ -17,15 +18,9 @@ export const DropdownMenu = ({items}: MenuProps) => {
           menu={{
             items,
             selectable: true,
-            style: { background: "black" },
           }}
         >
-          <Button
-            style={{
-              background: "black",
-              color: "#fff",
-            }}
-          >
+          <Button type="primary">
             <Space>
               Filter by region
               <DownOutlined />

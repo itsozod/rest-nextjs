@@ -29,7 +29,7 @@ export const Countries = () => {
       label: (
         <a
           onClick={() => getCountryByRegion("Africa")}
-          style={{ color: "#fff" }}
+          style={{ color: "black" }}
           href="#"
         >
           Africa
@@ -41,7 +41,7 @@ export const Countries = () => {
       label: (
         <a
           onClick={() => getCountryByRegion("America")}
-          style={{ color: "#fff" }}
+          // style={{ color: "#fff" }}
           href="#"
         >
           America
@@ -53,7 +53,7 @@ export const Countries = () => {
       label: (
         <a
           onClick={() => getCountryByRegion("Asia")}
-          style={{ color: "#fff" }}
+          // style={{ color: "#fff" }}
           href="#"
         >
           Asia
@@ -65,7 +65,7 @@ export const Countries = () => {
       label: (
         <a
           onClick={() => getCountryByRegion("Europe")}
-          style={{ color: "#fff" }}
+          // style={{ color: "#fff" }}
           href="#"
         >
           Europe
@@ -77,7 +77,7 @@ export const Countries = () => {
       label: (
         <a
           onClick={() => getCountryByRegion("Oceania")}
-          style={{ color: "#fff" }}
+          // style={{ color: "#fff" }}
           href="#"
         >
           Oceania
