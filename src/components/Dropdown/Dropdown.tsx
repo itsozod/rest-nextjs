@@ -12,7 +12,7 @@ export const DropdownMenu = ({ items }: MenuProps) => {
             colorPrimary: "#fff",
             colorTextLightSolid: "black",
             colorPrimaryBg: "black",
-            colorPrimaryBgHover: "black"
+            colorPrimaryBgHover: "black",
           },
         }}
       >

@@ -1,15 +1,22 @@
+"use client";
+import { useThemeStore } from "@/store/store";
+import { useTheme } from "@/utils/useTheme";
 import { ConfigProvider } from "antd";
 import React from "react";
 
 export const ConfigLayout = ({ children }: { children: React.ReactNode }) => {
+  const { theme } = useThemeStore();
   return (
     <>
       <ConfigProvider
         theme={{
           token: {
-            colorBgBase: "#fff",
+            colorBgBase: useTheme(theme),
           },
           components: {
+            Button: {
+              colorPrimary: "blue",
+            },
             Input: {
               colorBgBase: "white",
               colorPrimaryBg: "#fff",

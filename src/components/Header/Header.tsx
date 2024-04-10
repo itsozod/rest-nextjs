@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import styles from "./Header.module.css";
-import { ConfigProvider, Flex, Layout, Row } from "antd";
-// import { Header } from "antd/es/layout/layout";
+import { Button, Flex, Layout, Row } from "antd";
+import { useThemeStore } from "@/store/store";
 
 export const HeaderLayout = () => {
   const { Header } = Layout;
+  const { setTheme } = useThemeStore();
+
   return (
     <>
       <Header className={styles.header}>
@@ -15,7 +17,9 @@ export const HeaderLayout = () => {
           className={styles["header_container"]}
         >
           <Row>Where in the world</Row>
-          <Row>Dark Mode</Row>
+          <Button type="primary" onClick={setTheme}>
+            Dark Mode
+          </Button>
         </Flex>
       </Header>
     </>

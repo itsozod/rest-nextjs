@@ -1,8 +1,8 @@
-export const useTheme = (color: string) => {
-  switch (color) {
-    case "dark":
+export const useTheme = (value: boolean) => {
+  switch (value) {
+    case true:
       return "black";
-    case "light":
+    case false:
       return "#fff";
     default:
       return "#fff";
