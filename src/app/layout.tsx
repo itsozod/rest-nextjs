@@ -4,6 +4,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { HeaderLayout } from "@/components/Header/Header";
 import { Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
+import { ConfigLayout } from "@/components/ConfigLayout/ConfigLayout";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,12 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Layout style={{ minHeight: "100vh", background: "#fff" }}>
-          <AntdRegistry>
-            <HeaderLayout />
-            <Content style={{ background: "lightgrey" }}>{children}</Content>
-          </AntdRegistry>
-        </Layout>
+        <ConfigLayout>
+          <Layout style={{ minHeight: "100vh" }}>
+            <AntdRegistry>
+              <HeaderLayout />
+              <Content>{children}</Content>
+            </AntdRegistry>
+          </Layout>
+        </ConfigLayout>
       </body>
     </html>
   );

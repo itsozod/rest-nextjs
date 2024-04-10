@@ -1,5 +1,5 @@
 "use client";
-import { Col, Flex, MenuProps, Row } from "antd";
+import { Col, Flex, MenuProps, Row, Typography } from "antd";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Countries.module.css";
@@ -27,61 +27,41 @@ export const Countries = () => {
     {
       key: "1",
       label: (
-        <a
-          onClick={() => getCountryByRegion("Africa")}
-          style={{ color: "black" }}
-          href="#"
-        >
+        <Typography.Link onClick={() => getCountryByRegion("Africa")} href="#">
           Africa
-        </a>
+        </Typography.Link>
       ),
     },
     {
       key: "2",
       label: (
-        <a
-          onClick={() => getCountryByRegion("America")}
-          // style={{ color: "#fff" }}
-          href="#"
-        >
+        <Typography.Link onClick={() => getCountryByRegion("America")} href="#">
           America
-        </a>
+        </Typography.Link>
       ),
     },
     {
       key: "3",
       label: (
-        <a
-          onClick={() => getCountryByRegion("Asia")}
-          // style={{ color: "#fff" }}
-          href="#"
-        >
+        <Typography.Link onClick={() => getCountryByRegion("Asia")} href="#">
           Asia
-        </a>
+        </Typography.Link>
       ),
     },
     {
       key: "4",
       label: (
-        <a
-          onClick={() => getCountryByRegion("Europe")}
-          // style={{ color: "#fff" }}
-          href="#"
-        >
+        <Typography.Link onClick={() => getCountryByRegion("Europe")} href="#">
           Europe
-        </a>
+        </Typography.Link>
       ),
     },
     {
       key: "5",
       label: (
-        <a
-          onClick={() => getCountryByRegion("Oceania")}
-          // style={{ color: "#fff" }}
-          href="#"
-        >
+        <Typography.Link onClick={() => getCountryByRegion("Oceania")} href="#">
           Oceania
-        </a>
+        </Typography.Link>
       ),
     },
   ];

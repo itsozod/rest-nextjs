@@ -7,9 +7,12 @@ export const DropdownMenu = ({ items }: MenuProps) => {
     <>
       <ConfigProvider
         theme={{
+          inherit: false,
           token: {
-            colorPrimary: "white",
+            colorPrimary: "#fff",
             colorTextLightSolid: "black",
+            colorPrimaryBg: "black",
+            colorPrimaryBgHover: "black"
           },
         }}
       >
