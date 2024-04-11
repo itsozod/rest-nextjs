@@ -15,7 +15,8 @@ export const ConfigLayout = ({ children }: { children: React.ReactNode }) => {
           },
           components: {
             Button: {
-              colorPrimary: "blue",
+              colorPrimary: useTheme(theme),
+              colorTextLightSolid: theme ? "#fff" : "black",
             },
             Input: {
               colorBgBase: "white",

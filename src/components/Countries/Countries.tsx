@@ -1,5 +1,5 @@
 "use client";
-import { Col, Flex, MenuProps, Row, Typography } from "antd";
+import { Col, ConfigProvider, Flex, MenuProps, Row, Typography } from "antd";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Countries.module.css";
@@ -8,6 +8,7 @@ import { SearchBar } from "../SearchBar/SearchBar";
 import { useRouter } from "next/navigation";
 import { DropdownMenu } from "../Dropdown/Dropdown";
 import { useDebounce } from "@uidotdev/usehooks";
+import { useThemeStore } from "@/store/store";
 
 export const Countries = () => {
   const getCountryByRegion = async (region: string) => {
@@ -111,6 +112,8 @@ export const Countries = () => {
     setQuery(value.toLowerCase());
   };
 
+  const { theme } = useThemeStore();
+
   return (
     <>
       <div
@@ -144,7 +147,7 @@ export const Countries = () => {
                   style={{
                     width: "100%",
                     height: "100%",
-                    background: "#fff",
+                    background: theme ? "hsl(209, 23%, 22%)" : "#fff",
                     alignSelf: "normal",
                     borderRadius: "12px",
                     cursor: "pointer",
@@ -168,6 +171,7 @@ export const Countries = () => {
                     style={{
                       padding: "10px",
                       marginTop: "auto",
+                      color: theme ? "#fff" : "black",
                     }}
                   >
                     <h2>{country?.name?.common}</h2>

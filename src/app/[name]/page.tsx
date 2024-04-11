@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
+import { useThemeStore } from "@/store/store";
 
 export default function CountryInfo({ params }: { params: { name: string } }) {
   const [countries, setCountries] = useState([]);
@@ -17,6 +18,7 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
     };
     getCountryByName(params.name);
   }, [params.name]);
+  const { theme } = useThemeStore();
   return (
     <Flex
       vertical={true}
@@ -37,6 +39,7 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
       >
         <Row>
           <Button
+            type="primary"
             onClick={() => {
               router.push("/");
             }}
@@ -68,7 +71,13 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
                   />
                 </Row>
 
-                <Flex vertical={true} gap={40}>
+                <Flex
+                  vertical={true}
+                  gap={40}
+                  style={{
+                    color: theme ? "#fff" : "black",
+                  }}
+                >
                   <Flex className={styles.country_info_container} gap={80}>
                     <Flex vertical={true} gap={10} justify="center">
                       <h1>{country?.name?.common}</h1>
@@ -86,7 +95,8 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
                         Currencies: {country?.currencies[currencyKey]?.name}{" "}
                       </Row>
                       <Row>
-                        Languages: {Object.values(country?.languages).join(", ")}
+                        Languages:{" "}
+                        {Object.values(country?.languages).join(", ")}
                       </Row>
                     </Col>
                   </Flex>
