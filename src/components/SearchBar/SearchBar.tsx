@@ -1,5 +1,5 @@
 "use client";
-import { Input, Row } from "antd";
+import { ConfigProvider, Input, Row } from "antd";
 import React, { ChangeEvent } from "react";
 
 export const SearchBar = ({
@@ -17,10 +17,11 @@ export const SearchBar = ({
           maxWidth: "400px",
         }}
       >
-        <Input
+        <Input.Search
+          size="large"
           value={query}
           onChange={handleQuery}
-          placeholder="Enter country name"
+          placeholder="Search for a country..."
         />
       </Row>
     </>

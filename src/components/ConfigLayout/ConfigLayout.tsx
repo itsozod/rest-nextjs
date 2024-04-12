@@ -13,6 +13,7 @@ export const ConfigLayout = ({ children }: { children: React.ReactNode }) => {
           token: {
             colorBgBase: useTheme(theme),
           },
+
           components: {
             Button: {
               colorPrimary: useTheme(theme),
@@ -22,8 +23,9 @@ export const ConfigLayout = ({ children }: { children: React.ReactNode }) => {
               colorBgBase: "white",
               colorPrimaryBg: "#fff",
               colorPrimary: "#fff",
-              colorBgContainer: "#fff",
+              colorBgContainer: theme ? "hsl(209, 23%, 22%)" : "#fff",
               colorPrimaryHover: "black",
+              colorTextPlaceholder: theme ? "#fff" : "black",
             },
           },
         }}
