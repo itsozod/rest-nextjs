@@ -1,5 +1,5 @@
 "use client";
-import { Col, ConfigProvider, Flex, MenuProps, Row, Typography } from "antd";
+import { Col, Flex, MenuProps, Typography } from "antd";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Countries.module.css";
@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { DropdownMenu } from "../Dropdown/Dropdown";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useThemeStore } from "@/store/store";
+import { Country } from "@/Types";
 
 export const Countries = () => {
   const getCountryByRegion = async (region: string) => {
@@ -137,7 +138,7 @@ export const Countries = () => {
           {notFound ? (
             <p>Not found!!!</p>
           ) : (
-            countries?.map((country: any) => {
+            countries?.map((country: Country) => {
               return (
                 <Flex
                   onClick={() => {

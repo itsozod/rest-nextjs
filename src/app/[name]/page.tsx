@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { useThemeStore } from "@/store/store";
+import { Country } from "@/Types";
 
 export default function CountryInfo({ params }: { params: { name: string } }) {
   const [countries, setCountries] = useState([]);
@@ -51,10 +52,11 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
         <Flex
           className={styles["country_container"]}
           gap={80}
-          justify="space-between"
+          justify={"space-between"}
+          vertical={countries.length > 1 ? true : false}
+          align="center"
         >
-          {countries?.map((country) => {
-            const currencyKey = Object.keys(country?.currencies);
+          {countries?.map((country: Country) => {
             return (
               <>
                 <Row key={country?.flags?.svg}>
@@ -92,7 +94,10 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
                     <Col>
                       <Row>Top Level Domain: {country?.tld[0]}</Row>
                       <Row>
-                        Currencies: {country?.currencies[currencyKey]?.name}{" "}
+                        Currencies:{" "}
+                        {Object.keys(country?.currencies)?.map(
+                          (key) => country?.currencies[key]?.name
+                        )}
                       </Row>
                       <Row>
                         Languages:{" "}
