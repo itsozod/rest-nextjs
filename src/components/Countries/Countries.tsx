@@ -29,41 +29,53 @@ export const Countries = () => {
     {
       key: "1",
       label: (
-        <Typography.Text onClick={() => getCountryByRegion("Africa")}>
+        <Typography.Title
+          level={5}
+          onClick={() => getCountryByRegion("Africa")}
+        >
           Africa
-        </Typography.Text>
+        </Typography.Title>
       ),
     },
     {
       key: "2",
       label: (
-        <Typography.Text onClick={() => getCountryByRegion("America")}>
+        <Typography.Title
+          level={5}
+          onClick={() => getCountryByRegion("America")}
+        >
           America
-        </Typography.Text>
+        </Typography.Title>
       ),
     },
     {
       key: "3",
       label: (
-        <Typography.Text onClick={() => getCountryByRegion("Asia")}>
+        <Typography.Title level={5} onClick={() => getCountryByRegion("Asia")}>
           Asia
-        </Typography.Text>
+        </Typography.Title>
       ),
     },
     {
       key: "4",
       label: (
-        <Typography.Text onClick={() => getCountryByRegion("Europe")}>
+        <Typography.Title
+          level={5}
+          onClick={() => getCountryByRegion("Europe")}
+        >
           Europe
-        </Typography.Text>
+        </Typography.Title>
       ),
     },
     {
       key: "5",
       label: (
-        <Typography.Text onClick={() => getCountryByRegion("Oceania")}>
+        <Typography.Title
+          level={5}
+          onClick={() => getCountryByRegion("Oceania")}
+        >
           Oceania
-        </Typography.Text>
+        </Typography.Title>
       ),
     },
   ];
