@@ -28,41 +28,41 @@ export const Countries = () => {
     {
       key: "1",
       label: (
-        <Typography.Link onClick={() => getCountryByRegion("Africa")} href="#">
+        <Typography.Text onClick={() => getCountryByRegion("Africa")}>
           Africa
-        </Typography.Link>
+        </Typography.Text>
       ),
     },
     {
       key: "2",
       label: (
-        <Typography.Link onClick={() => getCountryByRegion("America")} href="#">
+        <Typography.Text onClick={() => getCountryByRegion("America")}>
           America
-        </Typography.Link>
+        </Typography.Text>
       ),
     },
     {
       key: "3",
       label: (
-        <Typography.Link onClick={() => getCountryByRegion("Asia")} href="#">
+        <Typography.Text onClick={() => getCountryByRegion("Asia")}>
           Asia
-        </Typography.Link>
+        </Typography.Text>
       ),
     },
     {
       key: "4",
       label: (
-        <Typography.Link onClick={() => getCountryByRegion("Europe")} href="#">
+        <Typography.Text onClick={() => getCountryByRegion("Europe")}>
           Europe
-        </Typography.Link>
+        </Typography.Text>
       ),
     },
     {
       key: "5",
       label: (
-        <Typography.Link onClick={() => getCountryByRegion("Oceania")} href="#">
+        <Typography.Text onClick={() => getCountryByRegion("Oceania")}>
           Oceania
-        </Typography.Link>
+        </Typography.Text>
       ),
     },
   ];
@@ -123,7 +123,11 @@ export const Countries = () => {
           marginTop: "10px",
         }}
       >
-        <Flex gap={10} justify="space-between" style={{ padding: "10px" }}>
+        <Flex
+          className={styles.filters_container}
+          gap={10}
+          justify="space-between"
+        >
           <SearchBar query={query} handleQuery={handleQuery} />
           <DropdownMenu items={items} />
         </Flex>

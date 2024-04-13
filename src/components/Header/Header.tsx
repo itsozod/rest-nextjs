@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import styles from "./Header.module.css";
-import { Button, Flex, Layout, Row, Typography } from "antd";
+import { Flex, Layout, Row } from "antd";
 import { useThemeStore } from "@/store/store";
+import Image from "next/image";
 
 export const HeaderLayout = () => {
   const { Header } = Layout;
@@ -29,9 +30,24 @@ export const HeaderLayout = () => {
           >
             Where in the world
           </Row>
-          <Button type="primary" onClick={setTheme}>
-            Dark Mode
-          </Button>
+          <Row justify={"center"} align={"middle"} style={{ gap: "10px" }}>
+            <Image
+              src={theme ? "/moon-filled.png" : "/moon.png"}
+              alt="Moon"
+              width={20}
+              height={20}
+              loading="lazy"
+              style={{
+                width: "20px",
+                height: "20px",
+                borderTopLeftRadius: "12px",
+                borderTopRightRadius: "12px",
+                cursor: "pointer",
+              }}
+              onClick={setTheme}
+            />
+            <Row>Dark Mode</Row>
+          </Row>
         </Flex>
       </Header>
     </>

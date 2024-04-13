@@ -5,3 +5,9 @@
   gap: 80px;
   padding: 10px;
 }
+.filters_container {
+  padding: 10px;
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
+}

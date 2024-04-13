@@ -1,4 +1,3 @@
-import { theme } from "antd";
 import { create } from "zustand";
 
 interface ThemeState {

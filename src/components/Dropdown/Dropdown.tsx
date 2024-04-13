@@ -16,14 +16,9 @@ export const DropdownMenu = ({ items }: MenuProps) => {
     <>
       <ConfigProvider
         theme={{
-          components: {
-            Dropdown: {
-              colorPrimary: theme ? "hsl(209, 23%, 22%)" : "#fff",
-              colorTextLightSolid: theme ? "#fff" : "black",
-              colorPrimaryBg: theme ? "black" : "red",
-              colorPrimaryBgHover: theme ? "black" : "#fff",
-              colorBgTextActive: "red",
-            },
+          token: {
+            colorPrimary: theme ? "hsl(209, 23%, 22%)" : "lightblue",
+            colorText: theme ? "white" : "black",
           },
         }}
       >
