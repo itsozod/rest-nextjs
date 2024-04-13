@@ -7,17 +7,22 @@ import Image from "next/image";
 import { useThemeStore } from "@/store/store";
 import { Country } from "@/Types";
 
+const getCountryByName = async (
+  name: string,
+  setCountries: (data: any) => void
+) => {
+  const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+  const data = await res.json();
+  console.log(data);
+  setCountries(data);
+};
+
 export default function CountryInfo({ params }: { params: { name: string } }) {
   const [countries, setCountries] = useState([]);
   const router = useRouter();
-  const getCountryByName = async (name: string) => {
-    const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
-    const data = await res.json();
-    console.log(data);
-    setCountries(data);
-  };
+
   useEffect(() => {
-    getCountryByName(params.name);
+    getCountryByName(params.name, setCountries);
   }, [params.name]);
   const { theme } = useThemeStore();
   return (
