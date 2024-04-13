@@ -10,13 +10,13 @@ import { Country } from "@/Types";
 export default function CountryInfo({ params }: { params: { name: string } }) {
   const [countries, setCountries] = useState([]);
   const router = useRouter();
+  const getCountryByName = async (name: string) => {
+    const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+    const data = await res.json();
+    console.log(data);
+    setCountries(data);
+  };
   useEffect(() => {
-    const getCountryByName = async (name: string) => {
-      const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
-      const data = await res.json();
-      console.log(data);
-      setCountries(data);
-    };
     getCountryByName(params.name);
   }, [params.name]);
   const { theme } = useThemeStore();
