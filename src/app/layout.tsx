@@ -5,6 +5,7 @@ import { HeaderLayout } from "@/components/Header/Header";
 import { Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import { ConfigLayout } from "@/components/ConfigLayout/ConfigLayout";
+import { QueryProvider } from "@/utils/providers/QueryProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,14 +20,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ConfigLayout>
-          <Layout style={{ minHeight: "100vh" }}>
-            <AntdRegistry>
-              <HeaderLayout />
-              <Content>{children}</Content>
-            </AntdRegistry>
-          </Layout>
-        </ConfigLayout>
+        <QueryProvider>
+          <ConfigLayout>
+            <Layout style={{ minHeight: "100vh" }}>
+              <AntdRegistry>
+                <HeaderLayout />
+                <Content>{children}</Content>
+              </AntdRegistry>
+            </Layout>
+          </ConfigLayout>
+        </QueryProvider>
       </body>
     </html>
   );

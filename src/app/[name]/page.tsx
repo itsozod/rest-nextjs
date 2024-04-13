@@ -1,29 +1,33 @@
 "use client";
 import { Button, Col, Flex, Row } from "antd";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { useThemeStore } from "@/store/store";
 import { Country } from "@/Types";
+import { useQuery } from "@tanstack/react-query";
+
+const getCountryByName = async (name: string) => {
+  const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+  const data = await res.json();
+  return data;
+};
 
 export default function CountryInfo({ params }: { params: { name: string } }) {
-  const [countries, setCountries] = useState([]);
+  const {
+    isLoading,
+    data: countries,
+    isError,
+  } = useQuery({
+    queryKey: ["countries"],
+    queryFn: async () => await getCountryByName(params.name),
+  });
   const router = useRouter();
-  const getCountryByName = async (
-    name: string,
-    setCountries: (data: any) => void
-  ) => {
-    const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
-    const data = await res.json();
-    console.log(data);
-    setCountries(data);
-  };
 
-  useEffect(() => {
-    getCountryByName(params.name, setCountries);
-  }, [params.name]);
   const { theme } = useThemeStore();
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error</div>;
   return (
     <Flex
       vertical={true}
@@ -57,7 +61,7 @@ export default function CountryInfo({ params }: { params: { name: string } }) {
           className={styles["country_container"]}
           gap={80}
           justify={"space-between"}
-          vertical={countries.length > 1 ? true : false}
+          vertical={countries?.length > 1 ? true : false}
           align="center"
         >
           {countries?.map((country: Country) => {
