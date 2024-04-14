@@ -31,6 +31,9 @@ export const Countries = () => {
       key: "1",
       label: (
         <Typography.Title
+          style={{
+            width: "100%",
+          }}
           level={5}
           onClick={() => getCountryByRegion("Africa")}
         >
@@ -42,6 +45,9 @@ export const Countries = () => {
       key: "2",
       label: (
         <Typography.Title
+          style={{
+            width: "100%",
+          }}
           level={5}
           onClick={() => getCountryByRegion("America")}
         >
@@ -52,7 +58,13 @@ export const Countries = () => {
     {
       key: "3",
       label: (
-        <Typography.Title level={5} onClick={() => getCountryByRegion("Asia")}>
+        <Typography.Title
+          style={{
+            width: "100%",
+          }}
+          level={5}
+          onClick={() => getCountryByRegion("Asia")}
+        >
           Asia
         </Typography.Title>
       ),
@@ -61,6 +73,9 @@ export const Countries = () => {
       key: "4",
       label: (
         <Typography.Title
+          style={{
+            width: "100%",
+          }}
           level={5}
           onClick={() => getCountryByRegion("Europe")}
         >
@@ -72,6 +87,9 @@ export const Countries = () => {
       key: "5",
       label: (
         <Typography.Title
+          style={{
+            width: "100%",
+          }}
           level={5}
           onClick={() => getCountryByRegion("Oceania")}
         >
